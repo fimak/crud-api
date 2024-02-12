@@ -5,14 +5,6 @@ import usersAPI from './api/users';
 
 const server = createServer((req: IncomingMessage, res: ServerResponse<IncomingMessage>) => {
   const { url } = req;
-  let bodyBuffer: Uint8Array[] = [];
-  let body: string = '';
-
-  req.on('data', (chunk) => {
-    bodyBuffer.push(chunk);
-  }).on('end', () => {
-    body = Buffer.concat(bodyBuffer).toString();
-  });
 
   if (url && url.startsWith('/api/users')) {
     usersAPI(req, res);

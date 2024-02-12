@@ -4,6 +4,16 @@ import users from '../store/users';
 
 const usersAPI = (req: IncomingMessage, res: ServerResponse<IncomingMessage>):void => {
   const { method, url } = req;
+
+  let bodyBuffer: Uint8Array[] = [];
+  let body: string = '';
+
+  req.on('data', (chunk) => {
+    bodyBuffer.push(chunk);
+  }).on('end', () => {
+    body = Buffer.concat(bodyBuffer).toString();
+  });
+
   if (url) {
     const getUser = (url: string) => {
       const params = url.split('/');
@@ -29,10 +39,16 @@ const usersAPI = (req: IncomingMessage, res: ServerResponse<IncomingMessage>):vo
       }
     }
 
+    const postUser = (url: string) => {
+      const { username, age, hobbies } = JSON.parse(body);
+    }
+
     switch (method) {
       case 'GET':
         getUser(url);
         break;
+      case 'POST':
+        postUser(url);
       default:
         res.writeHead(404, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ message: 'Non existing endpoint' }));
