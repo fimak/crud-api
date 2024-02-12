@@ -1,0 +1,33 @@
+{
+  "name": "crud-api",
+  "version": "1.0.0",
+  "description": "CRUD API",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fimak/crud-api.git"
+  },
+  "keywords": [
+    "node",
+    "crud",
+    "api"
+  ],
+  "author": "Aleksandr Ufimtsev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fimak/crud-api/issues"
+  },
+  "homepage": "https://github.com/fimak/crud-api#readme",
+  "dependencies": {
+    "@types/node": "^20.11.17",
+    "dotenv": "^16.4.2",
+    "eslint": "^8.56.0",
+    "prettier": "^3.2.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
